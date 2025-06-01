@@ -45,12 +45,12 @@ for ITEM in "${HOME_ITEMS[@]}"; do
   echo "✅ Synced $SRC → $DEST"
 done
 
-### 3. Git add, commit, and push
-# cd "$DEST_ROOT" || exit 1
-#
-# git add .
-# COMMIT_MSG="Sync on $(date '+%Y-%m-%d %H:%M:%S')"
-# git commit -m "$COMMIT_MSG"
-# git push
+## 3. Git add, commit, and push
+cd "$DEST_ROOT" || exit 1
+
+git add .
+COMMIT_MSG="Sync on $(date '+%Y-%m-%d %H:%M:%S')"
+git commit -m "$COMMIT_MSG"
+git push
 
 echo "🚀 All changes pushed to remote Git repository."
