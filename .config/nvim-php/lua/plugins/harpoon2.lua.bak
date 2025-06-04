@@ -1,40 +1,40 @@
-
 return {
   "ThePrimeagen/harpoon",
   branch = "harpoon2",
   dependencies = {
     "nvim-lua/plenary.nvim",
-    "ibhagwan/fzf-lua", -- Replace Telescope with fzf-lua
+    "nvim-telescope/telescope.nvim",
   },
   keys = function()
     local keys = {
-      { "h", false },
-      { "H", false },
+      -- Group leader key
+      { "<leader>h", false },
+      { "<leader>H", false },
 
-      -- Open Harpoon list using fzf-lua
+      -- Open Harpoon list using Telescope
       {
         "<leader>hl",
         function()
           local harpoon = require("harpoon")
-          local file_paths = {}
+          local conf = require("telescope.config").values
 
+          local file_paths = {}
           for _, item in ipairs(harpoon:list().items) do
             table.insert(file_paths, item.value)
           end
 
-          require("fzf-lua").fzf_exec(file_paths, {
-            prompt = "Harpoon Files> ",
-            previewer = "builtin",
-            actions = {
-              ["default"] = function(selected)
-                if #selected > 0 then
-                  vim.cmd("edit " .. selected[1])
-                end
-              end,
-            },
-          })
+          require("telescope.pickers")
+            .new({}, {
+              prompt_title = "Harpoon",
+              finder = require("telescope.finders").new_table({
+                results = file_paths,
+              }),
+              previewer = conf.file_previewer({}),
+              sorter = conf.generic_sorter({}),
+            })
+            :find()
         end,
-        desc = "Harpoon: Open file list (fzf-lua)",
+        desc = "Harpoon: Open file list (Telescope)",
       },
 
       -- Clear all Harpoon marks
@@ -55,7 +55,6 @@ return {
         desc = "Harpoon: Add current file",
       },
     }
-
     for i = 1, 5 do
       table.insert(keys, {
         "<leader>h" .. i,
@@ -65,11 +64,9 @@ return {
         desc = "Harpoon to File " .. i,
       })
     end
-
     return keys
   end,
   config = function()
     require("harpoon"):setup()
   end,
 }
-
