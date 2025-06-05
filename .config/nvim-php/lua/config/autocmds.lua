@@ -27,3 +27,5 @@ end
 
 set_autoformat({ "php" }, false)
 set_autoformat({ "lua" }, false)
+set_autoformat({ "json" }, false)
+set_autoformat({ "jsonc" }, false)

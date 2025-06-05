@@ -3,38 +3,37 @@ return {
   branch = "harpoon2",
   dependencies = {
     "nvim-lua/plenary.nvim",
-    "nvim-telescope/telescope.nvim",
+    "ibhagwan/fzf-lua", -- Replace Telescope with fzf-lua
   },
   keys = function()
     local keys = {
-      -- Group leader key
-      { "<leader>h", false },
-      { "<leader>H", false },
+      { "h", false },
+      { "H", false },
 
-      -- Open Harpoon list using Telescope
+      -- Open Harpoon list using fzf-lua
       {
         "<leader>hl",
         function()
           local harpoon = require("harpoon")
-          local conf = require("telescope.config").values
-
           local file_paths = {}
+
           for _, item in ipairs(harpoon:list().items) do
             table.insert(file_paths, item.value)
           end
 
-          require("telescope.pickers")
-            .new({}, {
-              prompt_title = "Harpoon",
-              finder = require("telescope.finders").new_table({
-                results = file_paths,
-              }),
-              previewer = conf.file_previewer({}),
-              sorter = conf.generic_sorter({}),
-            })
-            :find()
+          require("fzf-lua").fzf_exec(file_paths, {
+            prompt = "Harpoon Files> ",
+            previewer = "builtin",
+            actions = {
+              ["default"] = function(selected)
+                if #selected > 0 then
+                  vim.cmd("edit " .. selected[1])
+                end
+              end,
+            },
+          })
         end,
-        desc = "Harpoon: Open file list (Telescope)",
+        desc = "Harpoon: Open file list (fzf-lua)",
       },
 
       -- Clear all Harpoon marks
@@ -55,6 +54,7 @@ return {
         desc = "Harpoon: Add current file",
       },
     }
+
     for i = 1, 5 do
       table.insert(keys, {
         "<leader>h" .. i,
@@ -64,6 +64,7 @@ return {
         desc = "Harpoon to File " .. i,
       })
     end
+
     return keys
   end,
   config = function()
