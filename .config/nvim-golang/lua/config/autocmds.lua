@@ -27,3 +27,6 @@ end
 
 set_autoformat({ "php" }, false)
 set_autoformat({ "lua" }, false)
+set_autoformat({ "svelte" }, false)
+set_autoformat({ "js" }, false)
+set_autoformat({ "ts" }, false)

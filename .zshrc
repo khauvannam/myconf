@@ -168,4 +168,5 @@ alias godot-os="distrobox enter godot-os"
 alias js-os="distrobox enter js-os"
 alias golang-os="distrobox enter golang-os"
 alias php-os="distrobox enter php-os"
-alias start-godot="/home/llama03dev/godot-engine/4.4.1/Godot_v4.4.1.x86_64"
+
+export PATH=$PATH:$HOME/go/bin
