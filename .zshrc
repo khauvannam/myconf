@@ -170,3 +170,4 @@ alias golang-os="distrobox enter golang-os"
 alias php-os="distrobox enter php-os"
 
 export PATH=$PATH:$HOME/go/bin
+export PATH="$HOME/.config/composer/vendor/bin:$PATH"

@@ -1,0 +1,46 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {}
+  },
+  {
+    "context": "Editor && vim_mode == normal || vim_mode == visual && !menu",
+    "bindings": {
+      "space h": "workspace::ToggleLeftDock",
+      "space l": "workspace::ToggleRightDock",
+      "space j": "workspace::ToggleBottomDock",
+      "space p": "project_panel::ToggleFocus",
+      "space space": "file_finder::Toggle",
+      "g r": "editor::FindAllReferences",
+      "space c f": "editor::FormatSelections",
+      "space g g": "git_panel::ToggleFocus",
+      "space .": "zed::OpenSettings",
+      "space d k": "zed::OpenKeymap",
+      "space o l": "outline_panel::ToggleFocus",
+      "space |": "pane::SplitVertical",
+      "space w q": "pane::CloseInactiveItems",
+      "space w a": "pane::CloseAllItems",
+      "space w l": "workspace::ActivatePaneRight",
+      "space w h": "workspace::ActivatePaneLeft",
+      "space g b": "git::Blame",
+      "space g l": "editor::ToggleGitBlameInline",
+      "space f t": "terminal_panel::ToggleFocus",
+
+      "space c a": "editor::ToggleCodeActions",
+      "space c r": "editor::Rename"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert && !menu",
+    "bindings": {
+      // "j k": "vim::SwitchToNormalMode"
+    }
+  }
+]

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Config folders inside ~/.config
-CONFIG_FOLDERS=("nvim" "nvim-php" "nvim-js" "nvim-golang" "nvim-godot")
+CONFIG_FOLDERS=("nvim" "nvim-php" "nvim-js" "nvim-golang" "nvim-godot", "zed")
 
 # Other files/folders in $HOME
 HOME_ITEMS=(".zshrc" ".bashrc")
