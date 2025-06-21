@@ -16,31 +16,81 @@
       "space h": "workspace::ToggleLeftDock",
       "space l": "workspace::ToggleRightDock",
       "space j": "workspace::ToggleBottomDock",
-      "space p": "project_panel::ToggleFocus",
-      "space space": "file_finder::Toggle",
-      "g r": "editor::FindAllReferences",
-      "space c f": "editor::FormatSelections",
-      "space g g": "git_panel::ToggleFocus",
-      "space .": "zed::OpenSettings",
-      "space d k": "zed::OpenKeymap",
-      "space o l": "outline_panel::ToggleFocus",
-      "space |": "pane::SplitVertical",
-      "space w q": "pane::CloseInactiveItems",
-      "space w a": "pane::CloseAllItems",
       "space w l": "workspace::ActivatePaneRight",
       "space w h": "workspace::ActivatePaneLeft",
-      "space g b": "git::Blame",
-      "space g l": "editor::ToggleGitBlameInline",
+
+      "space w q": "pane::CloseInactiveItems",
+      "space w a": "pane::CloseAllItems",
+      "space |": "pane::SplitVertical",
+      "space /": "pane::DeploySearch",
+
+      "space o l": "outline_panel::ToggleFocus",
+      "space g g": "git_panel::ToggleFocus",
+      "space e": "project_panel::ToggleFocus",
       "space f t": "terminal_panel::ToggleFocus",
 
-      "space c a": "editor::ToggleCodeActions",
-      "space c r": "editor::Rename"
+      "space g l": "editor::ToggleGitBlameInline",
+      "g r": "editor::FindAllReferences",
+      "space c f": "editor::FormatSelections",
+      "space c r": "editor::Rename",
+
+      "space space": "file_finder::Toggle",
+      "space .": "zed::OpenSettings",
+      "space d k": "zed::OpenKeymap",
+      "space g b": "git::Blame",
+
+      "space r p": "projects::OpenRecent"
     }
   },
   {
     "context": "Editor && vim_mode == insert && !menu",
     "bindings": {
       // "j k": "vim::SwitchToNormalMode"
+    }
+  },
+  {
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      // Open file finder
+      "space space": "file_finder::Toggle",
+      // Open recent project
+      "space r p": "projects::OpenRecent"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "a": "project_panel::NewFile",
+      "A": "project_panel::NewDirectory",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Delete",
+      "x": "project_panel::Cut",
+      "c": "project_panel::Copy",
+      "p": "project_panel::Paste"
+    }
+  },
+  {
+    "context": "EmptyPane || SharedScreen || vim_mode == normal",
+    "bindings": {
+      "space r t": ["editor::SpawnNearestTask", { "reveal": "no_focus" }]
+    }
+  },
+  {
+    "context": "vim_operator == a || vim_operator == i || vim_operator == cs",
+    "bindings": {
+      // Traditional Vim behavior
+      "q": "vim::AnyQuotes",
+      "b": "vim::AnyBrackets",
+
+      // mini.ai plugin behavior
+      "Q": "vim::MiniQuotes",
+      "B": "vim::MiniBrackets"
+    }
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "shift-x": "vim::Exchange"
     }
   }
 ]
