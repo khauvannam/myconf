@@ -155,17 +155,15 @@ _dynamic_nvim_config() {
       export NVIM_APPNAME="$config_path"
     else
       echo "Config path $config_path not found, falling back to default nvim config."
-      export NVIM_APPNAME="nvim"
+      export NVIM_APPNAME="nvim-php"
     fi
   else
-    export NVIM_APPNAME="nvim"
+    export NVIM_APPNAME="nvim-php"
   fi
 }
 
 _dynamic_nvim_config 
 
-alias godot-os="distrobox enter godot-os"
-alias js-os="distrobox enter js-os"
 alias golang-os="distrobox enter golang-os"
 alias php-os="distrobox enter php-os"
 
