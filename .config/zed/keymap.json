@@ -33,6 +33,7 @@
       "g r": "editor::FindAllReferences",
       "space c f": "editor::FormatSelections",
       "space c r": "editor::Rename",
+      "space c a": "editor::ToggleCodeActions",
 
       "space space": "file_finder::Toggle",
       "space .": "zed::OpenSettings",
@@ -67,6 +68,13 @@
       "x": "project_panel::Cut",
       "c": "project_panel::Copy",
       "p": "project_panel::Paste"
+    }
+  },
+  {
+    "context": "Pane && not_editing",
+    "bindings": {
+      "space k" : "search::SelectNextMatch",
+      "space j": "search::SelectPreviousMatch"
     }
   },
   {

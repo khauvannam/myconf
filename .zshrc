@@ -145,27 +145,29 @@ export PATH="$(brew --prefix php@8.2)/sbin:$PATH"
 # fi
 eval "$(fnm env --use-on-cd --shell zsh)"
 
-_dynamic_nvim_config() {
-  if [[ -n "$CONTAINER_ID" ]]; then
-    container_name="${(L)CONTAINER_ID}"
-    language="${container_name%-os}"
-    config_path="nvim-${language}"
-
-    if [[ -d "$XDG_CONFIG_HOME/$config_path" || -d "$HOME/.config/$config_path" ]]; then
-      export NVIM_APPNAME="$config_path"
-    else
-      echo "Config path $config_path not found, falling back to default nvim config."
       export NVIM_APPNAME="nvim-php"
-    fi
-  else
-    export NVIM_APPNAME="nvim-php"
-  fi
-}
+# _dynamic_nvim_config() {
+#   if [[ -n "$CONTAINER_ID" ]]; then
+#     container_name="${(L)CONTAINER_ID}"
+#     language="${container_name%-os}"
+#     config_path="nvim-${language}"
+#
+#     if [[ -d "$XDG_CONFIG_HOME/$config_path" || -d "$HOME/.config/$config_path" ]]; then
+#       export NVIM_APPNAME="$config_path"
+#     else
+#       echo "Config path $config_path not found, falling back to default nvim config."
+#       export NVIM_APPNAME="nvim-php"
+#     fi
+#   else
+#     export NVIM_APPNAME="nvim-php"
+#   fi
+# }
 
-_dynamic_nvim_config 
+# _dynamic_nvim_config 
 
-alias golang-os="distrobox enter golang-os"
-alias php-os="distrobox enter php-os"
 
 export PATH=$PATH:$HOME/go/bin
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
+
+export CPPFLAGS="-I$(brew --prefix pcre2)/include"
+export LDFLAGS="-L$(brew --prefix pcre2)/lib"

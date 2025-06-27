@@ -18,7 +18,7 @@
     // * `always` — always show the task's pane, and focus the corresponding tab in it (default)
     // * `no_focus` — always show the task's pane, add the task's tab in it, but don't focus it
     // * `never` — do not alter focus, but still add/reuse the task's tab in its pane
-    "reveal": "always",
+    "reveal": "never",
     // Where to place the task's terminal item after starting the task:
     // * `dock` — in the terminal dock, "regular" terminal items' place (default)
     // * `center` — in the central pane group, "main" editor area
@@ -49,7 +49,16 @@
   },
   {
     "label": "Laravel Project Run",
-    "command": "php artisan serve | php artisan reverb:start",
-    "hide": "always"
+    "command": "podman compose up -d |php artisan serve | php artisan reverb:start",
+    "hide": "always",
+    "reveal": "never",
+    "reveal_target": "dock"
+  },
+  {
+    "label": "LazyGit",
+    "command": "lzg",
+    "reveal": "always",
+    "reveal_target": "center",
+    "hide": "on_success"
   }
 ]
