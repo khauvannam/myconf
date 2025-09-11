@@ -19,7 +19,7 @@
       "space w l": "workspace::ActivatePaneRight",
       "space w h": "workspace::ActivatePaneLeft",
 
-      "space w q": "pane::CloseInactiveItems",
+      "space w q": "pane::CloseOtherItems",
       "space w a": "pane::CloseAllItems",
       "space |": "pane::SplitVertical",
       "space /": "pane::DeploySearch",

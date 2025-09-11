@@ -66,7 +66,7 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 alias cd='z'
 
-# Zoxide 
+# Zoxide
 zinit light ajeetdsouza/zoxide
 
 #Starship
@@ -74,7 +74,7 @@ zinit light ajeetdsouza/zoxide
 zinit light starship/starship
 
 #zsh-autosuggestions
-zinit light zsh-users/zsh-autosuggestions 
+zinit light zsh-users/zsh-autosuggestions
 
 # FZF Configuration
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
@@ -163,8 +163,7 @@ eval "$(fnm env --use-on-cd --shell zsh)"
 #   fi
 # }
 
-# _dynamic_nvim_config 
-
+# _dynamic_nvim_config
 
 export PATH=$PATH:$HOME/go/bin
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"

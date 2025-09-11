@@ -1,12 +1,7 @@
 {
-  "show_edit_predictions": false,
+  "show_edit_predictions": true,
   "edit_predictions": {
-    "disabled_globs": [
-      "**/vendor/**",
-      "**/node_modules/**",
-      "**/storage/**",
-      "**/public/**"
-    ],
+    "disabled_globs": ["**/vendor/**", "**/node_modules/**", "**/storage/**"],
     "mode": "eager",
     "copilot": {
       "proxy": null,
@@ -33,7 +28,7 @@
 
   "theme": {
     "mode": "system",
-    "light": "Gruvbox Light Soft",
+    "light": "Fleet Light",
     "dark": "Gruvbox Dark Soft"
   },
 
@@ -51,6 +46,14 @@
     "Dockerfile": ["Dockerfile", "Dockerfile.*"],
     "JSON": ["json", "jsonc", "*.code-snippets"],
     "PHP": ["*.php"],
+    "Helm": [
+      "**/templates/**/*.tpl",
+      "**/templates/**/*.yaml",
+      "**/templates/**/*.yml",
+      "**/helmfile.d/**/*.yaml",
+      "**/helmfile.d/**/*.yml",
+      "**/values*.yaml"
+    ],
     "Blade": ["*.blade.php"]
   },
 
@@ -94,14 +97,13 @@
   },
 
   "agent": {
-    "version": "2",
     "button": false,
     "default_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-4.1"
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4"
     },
     "commit_message_model": {
-      "provider": "zed.dev",
+      "provider": "copilot_chat",
       "model": "gpt-4o"
     }
   },
@@ -117,15 +119,34 @@
   "confirm_quit": true,
 
   "languages": {
+    "TypeScript": {
+      "show_edit_predictions": true
+    },
+    "JavaScript": {
+      "show_edit_predictions": true
+    },
+    "Python": {
+      "show_edit_predictions": true
+    },
+    "Vue.js": {
+      "show_edit_predictions": true
+    },
+    "Svelte": {
+      "show_edit_predictions": true
+    },
+    "Solidity": {
+      "show_completion_documentation": true,
+      "show_edit_predictions": true
+    },
     "PHP": {
       "show_edit_predictions": true,
-      "language_servers": ["intelephense", "!phpactor"],
+      "language_servers": ["intelephense", "codebook", "!phpactor"],
       "formatter": "language_server"
     }
   },
 
   "features": {
-    "edit_prediction_provider": "copilot"
+    "edit_prediction_provider": "zed"
   },
 
   "diagnostics": {
